@@ -1,3 +1,4 @@
+// setting variables and pulling data from required libraries or class files
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -9,7 +10,36 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+// questions for user regarding employees
+const questions = [
+  {
+    type: "input",
+    message: "What is the Employee's Name?",
+    name: "name",
+  },
 
+  {
+    type: "list",
+    message: "What is the employee's position?",
+    name: "role",
+    choices: ["Manager", "Intern", "Engineer"],
+  },
+  {
+    type: "input",
+    message: "What is the employee's email?",
+    name: "email",
+  },
+  {
+    type: "number",
+    message: "What is the employee's ID number?",
+    name: "id",
+  },
+  {
+    type: "confirm",
+    message: "Is this the last employee?",
+    name: "finish",
+  },
+];
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
