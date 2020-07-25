@@ -111,6 +111,14 @@ async function addEmployee() {
 // this array will hold the objects of employees that are generated
 const employeeArray = [];
 
+// function to begin asking user questions
+function start() {
+  addEmployee();
+}
+
+// calling the start function
+start();
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
