@@ -40,6 +40,28 @@ const questions = [
     name: "finish",
   },
 ];
+// function to ask the questions
+async function addEmployee() {
+  // saving the answers to a variable
+  const answers = await inquirer.prompt(questions);
+  switch (answers.role) {
+    case "Manager":
+      const mgrAnswers = await inquirer.prompt({
+        type: "number",
+        message: "What is this employee's office number?",
+        name: "officeNumber",
+      });
+      const manager = new Manager(
+        answers.name,
+        answers.id,
+        answers.email,
+        mgrAnswers.officeNumber
+      );
+      employeeArray.push(manager);
+      console.log("Manager: ", manager);
+      break;
+  }
+}
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
