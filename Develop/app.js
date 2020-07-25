@@ -45,6 +45,7 @@ async function addEmployee() {
   // saving the answers to a variable
   const answers = await inquirer.prompt(questions);
   switch (answers.role) {
+    // switch case to allow for specific questions for when Manager is selected for the Role question
     case "Manager":
       const mgrAnswers = await inquirer.prompt({
         type: "number",
@@ -59,6 +60,38 @@ async function addEmployee() {
       );
       employeeArray.push(manager);
       console.log("Manager: ", manager);
+      break;
+    // switch case to allow for specific questions for when Engineer is selected for the Role question
+    case "Engineer":
+      const engineerAnswers = await inquirer.prompt({
+        type: "input",
+        message: "What is this employee's github username?",
+        name: "github",
+      });
+      const engineer = new Engineer(
+        answers.name,
+        answers.id,
+        answers.email,
+        engineerAnswers.github
+      );
+      employeeArray.push(engineer);
+      console.log("Engineer: ", engineer);
+      break;
+    // switch case to allow for specific questions for when Intern is selected for the Role question
+    case "Intern":
+      const internAnswers = await inquirer.prompt({
+        type: "input",
+        message: "What school does this intern attend?",
+        name: "school",
+      });
+      const intern = new Intern(
+        answers.name,
+        answers.id,
+        answers.email,
+        internAnswers.school
+      );
+      employeeArray.push(intern);
+      console.log("Intern: ", intern);
       break;
   }
 }
