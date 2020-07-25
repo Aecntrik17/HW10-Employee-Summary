@@ -94,6 +94,19 @@ async function addEmployee() {
       console.log("Intern: ", intern);
       break;
   }
+  //   conditional that makes sure the program sends the data to render function if true
+  if (answers.finish) {
+    console.log(employeeArray);
+    // this render function is taking in the objects that make up the employeeArray, which effectively converts it to html
+    render(employeeArray);
+    // setting the html created through the render function to a variable to be used to actually write the html file
+    const html = render(employeeArray);
+    console.log(html);
+    // writing the html file and placing it inside of the Output folder
+    fs.writeFile("../Output/team.html", html, (err) => {});
+  } else {
+    addEmployee();
+  }
 }
 
 // Write code to use inquirer to gather information about the development team members,
